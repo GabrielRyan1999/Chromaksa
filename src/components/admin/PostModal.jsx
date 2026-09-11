@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useState, useEffect } from 'react';
-import { X, Sparkles, Loader2, Trash2, Plus } from 'lucide-react';
+import { X, Sparkles, Loader2, Trash2, Plus, ChevronDown, ChevronRight } from 'lucide-react';
 import { GoogleGenAI, Type } from '@google/genai';
 
 export default function PostModal({ isOpen, onClose, onSave, post, initialDate }) {
@@ -28,13 +28,14 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
   useEffect(() => {
     if (post) {
       setFormData(post);
+      setIsAiExpanded(false); // Collapse for existing posts to save space
     } else {
       setFormData({ ...defaultState, date: initialDate || '' });
+      setIsAiExpanded(true); // Always expand for new posts
     }
     setAiPrompt('');
     setAiError('');
     setAiModelUsed(null);
-    setIsAiExpanded(true);
     setGenerationStatus('');
   }, [post, initialDate, isOpen]);
 
@@ -229,12 +230,13 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
               
               <div className="relative z-10">
                 <div 
-                  className={`flex justify-between items-center ${!isAiExpanded ? 'cursor-pointer' : 'mb-2'}`}
-                  onClick={() => !isAiExpanded && setIsAiExpanded(true)}
+                  className={`flex justify-between items-center cursor-pointer ${isAiExpanded ? 'mb-2' : ''}`}
+                  onClick={() => setIsAiExpanded(!isAiExpanded)}
                 >
-                  <label className={`block text-sm font-bold flex items-center gap-2 ${!isAiExpanded ? 'text-cyan-800' : 'text-cyan-900'}`}>
+                  <label className="block text-sm font-bold flex items-center gap-2 text-cyan-900 select-none">
                     <Sparkles className="w-4 h-4 text-cyan-600" />
                     Format & Idea Generator
+                    {isAiExpanded ? <ChevronDown className="w-4 h-4 text-cyan-700 ml-1" /> : <ChevronRight className="w-4 h-4 text-cyan-700 ml-1" />}
                   </label>
                   {aiModelUsed && (
                     <span className={`text-[10px] font-bold px-2 py-1 rounded-md border shadow-sm ${
