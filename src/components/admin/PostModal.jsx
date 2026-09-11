@@ -220,7 +220,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
           <div className="overflow-y-auto px-6 py-6 flex-1 flex flex-col gap-8 custom-scrollbar">
             
             {/* AI Generator Section (Always Visible) */}
-            <div className="bg-gradient-to-br from-cyan-100/60 to-green-100/60 rounded-2xl border border-white/60 shadow-sm relative overflow-hidden p-5">
+            <div className="shrink-0 bg-gradient-to-br from-cyan-100/60 to-green-100/60 rounded-2xl border border-white/60 shadow-sm relative overflow-hidden p-5">
               <div className="absolute inset-0 bg-white/30 backdrop-blur-sm pointer-events-none"></div>
               
               <div className="relative z-10">
@@ -287,7 +287,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
             </div>
 
             {/* Title & Summary */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 shrink-0">
               <div>
                 <input 
                   type="text" 
@@ -309,7 +309,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
             </div>
 
             {/* Date & Time Row */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 shrink-0">
               <div className="bg-white/60 backdrop-blur-md p-4 rounded-2xl shadow-sm border border-white/60 flex flex-col gap-1">
                 <span className="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Date</span>
                 <input 
@@ -355,7 +355,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
             )}
 
             {/* To-Do Checklist */}
-            <div>
+            <div className="shrink-0">
               <h4 className="text-[11px] font-bold text-gray-500 tracking-widest uppercase mb-3">To-Do Checklist</h4>
               <div className="flex flex-col gap-3">
                 {formData.todoList.map((task) => (
@@ -393,7 +393,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
             </div>
 
             {/* Creative Direction Notes */}
-            <div>
+            <div className="shrink-0">
               <h4 className="text-[11px] font-bold text-gray-500 tracking-widest uppercase mb-3">Creative Direction Notes</h4>
               <div className="bg-white/60 backdrop-blur-md rounded-2xl shadow-sm border border-white/60 p-5">
                 <textarea 
@@ -406,7 +406,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
             </div>
 
             {/* Status Dropdown */}
-            <div>
+            <div className="shrink-0">
               <h4 className="text-[11px] font-bold text-gray-500 tracking-widest uppercase mb-3">Status</h4>
               <select 
                 value={formData.status}
