@@ -1,42 +1,54 @@
 import { useState, useEffect } from 'react';
+import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
 
-const STORAGE_KEY = 'chromaksa_content_calendar';
+const COLLECTION_NAME = 'posts';
 
 export function usePosts() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      try {
-        setPosts(JSON.parse(saved));
-      } catch (e) {
-        console.error("Failed to parse posts from localStorage", e);
-      }
-    }
+    const unsubscribe = onSnapshot(collection(db, COLLECTION_NAME), (snapshot) => {
+      const postsData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      setPosts(postsData);
+    }, (error) => {
+      console.error("Error fetching posts:", error);
+    });
+
+    return () => unsubscribe();
   }, []);
 
-  const savePosts = (newPosts) => {
-    setPosts(newPosts);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(newPosts));
+  const addPost = async (postData) => {
+    try {
+      const newPost = {
+        ...postData,
+        createdAt: new Date().toISOString()
+      };
+      await addDoc(collection(db, COLLECTION_NAME), newPost);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
-  const addPost = (postData) => {
-    const newPost = {
-      ...postData,
-      id: Date.now().toString(),
-      createdAt: new Date().toISOString()
-    };
-    savePosts([...posts, newPost]);
+  const updatePost = async (id, updatedData) => {
+    try {
+      const postRef = doc(db, COLLECTION_NAME, id);
+      const { id: _, ...dataToUpdate } = updatedData;
+      await updateDoc(postRef, dataToUpdate);
+    } catch (e) {
+      console.error("Error updating document: ", e);
+    }
   };
 
-  const updatePost = (id, updatedData) => {
-    const newPosts = posts.map(p => p.id === id ? { ...p, ...updatedData } : p);
-    savePosts(newPosts);
-  };
-
-  const deletePost = (id) => {
-    savePosts(posts.filter(p => p.id !== id));
+  const deletePost = async (id) => {
+    try {
+      await deleteDoc(doc(db, COLLECTION_NAME, id));
+    } catch (e) {
+      console.error("Error deleting document: ", e);
+    }
   };
 
   return { posts, addPost, updatePost, deletePost };
