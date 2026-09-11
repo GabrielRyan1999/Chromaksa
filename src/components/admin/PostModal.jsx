@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useState, useEffect } from 'react';
-import { X, Sparkles, Loader2, Trash2, Plus, ChevronDown, ChevronRight } from 'lucide-react';
+import { X, Sparkles, Loader2, Trash2, Plus } from 'lucide-react';
 import { GoogleGenAI, Type } from '@google/genai';
 
 export default function PostModal({ isOpen, onClose, onSave, post, initialDate }) {
@@ -21,17 +21,14 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
   const [isGenerating, setIsGenerating] = useState(false);
   const [aiError, setAiError] = useState('');
   const [aiModelUsed, setAiModelUsed] = useState(null);
-  const [isAiExpanded, setIsAiExpanded] = useState(true);
   const [generationStatus, setGenerationStatus] = useState('');
   const [newTask, setNewTask] = useState('');
 
   useEffect(() => {
     if (post) {
       setFormData(post);
-      setIsAiExpanded(false); // Collapse for existing posts to save space
     } else {
       setFormData({ ...defaultState, date: initialDate || '' });
-      setIsAiExpanded(true); // Always expand for new posts
     }
     setAiPrompt('');
     setAiError('');
@@ -148,7 +145,6 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
         status: 'Idea'
       }));
       setAiModelUsed(usedModel);
-      setIsAiExpanded(false);
       setAiPrompt('');
     } catch (err) {
       console.error(err);
@@ -159,7 +155,6 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
       } else if (errMsg === 'QUOTA_EXCEEDED' || errMsg.includes('429') || errMsg.includes('RESOURCE_EXHAUSTED') || errMsg.includes('quota')) {
         setAiError('You have exceeded your free AI quota. Please wait a minute and try again.');
       } else if (errMsg.startsWith('{')) {
-        // Fallback to parse ugly raw Google JSON errors
         try {
           const parsed = JSON.parse(errMsg);
           setAiError(parsed.error?.message || 'An unexpected AI error occurred.');
@@ -224,19 +219,15 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
           {/* Scrolling Content */}
           <div className="overflow-y-auto px-6 py-6 flex-1 flex flex-col gap-8 custom-scrollbar">
             
-            {/* AI Generator Section (Now includes Format) */}
-            <div className={`bg-gradient-to-br from-cyan-100/60 to-green-100/60 rounded-2xl border border-white/60 shadow-sm relative overflow-hidden transition-all duration-300 ${isAiExpanded ? 'p-5' : 'p-3 px-4'}`}>
+            {/* AI Generator Section (Always Visible) */}
+            <div className="bg-gradient-to-br from-cyan-100/60 to-green-100/60 rounded-2xl border border-white/60 shadow-sm relative overflow-hidden p-5">
               <div className="absolute inset-0 bg-white/30 backdrop-blur-sm pointer-events-none"></div>
               
               <div className="relative z-10">
-                <div 
-                  className={`flex justify-between items-center cursor-pointer ${isAiExpanded ? 'mb-2' : ''}`}
-                  onClick={() => setIsAiExpanded(!isAiExpanded)}
-                >
+                <div className="flex justify-between items-center mb-2">
                   <label className="block text-sm font-bold flex items-center gap-2 text-cyan-900 select-none">
                     <Sparkles className="w-4 h-4 text-cyan-600" />
                     Format & Idea Generator
-                    {isAiExpanded ? <ChevronDown className="w-4 h-4 text-cyan-700 ml-1" /> : <ChevronRight className="w-4 h-4 text-cyan-700 ml-1" />}
                   </label>
                   {aiModelUsed && (
                     <span className={`text-[10px] font-bold px-2 py-1 rounded-md border shadow-sm ${
@@ -249,8 +240,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
                   )}
                 </div>
 
-                {isAiExpanded && (
-                  <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3">
                     <p className="text-xs text-cyan-800/80 mb-1">Select the format first, then type your idea so the AI can tailor the to-do list.</p>
                     
                     <div className="flex flex-col sm:flex-row gap-3">
@@ -285,8 +275,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
                       </div>
                     </div>
                   </div>
-                )}
-
+                
                 {isGenerating && (
                   <div className="mt-3 flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></div>
