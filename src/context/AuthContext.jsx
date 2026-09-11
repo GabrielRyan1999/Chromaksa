@@ -15,14 +15,26 @@ export function AuthProvider({ children }) {
     setLoading(false);
   }, []);
 
-  const login = (email, password) => {
-    // Hardcoded credentials for simple internal admin tool
-    if (email === 'admin@chromaksa.studio' && password === 'chromaksa2026') {
-      setIsAuthenticated(true);
-      localStorage.setItem('chromaksa_auth', 'true');
-      return true;
+  const login = async (email, password) => {
+    try {
+      const msgBuffer = new TextEncoder().encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+      // Hash for 'chromaksa2026'
+      const targetHash = '0939d8852a1eb6893608d22c8ed25954df1de0188e2aa8dd0410db256f6a04f4';
+
+      if (email === 'admin@chromaksa.studio' && hashHex === targetHash) {
+        setIsAuthenticated(true);
+        localStorage.setItem('chromaksa_auth', 'true');
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error('Hashing error', e);
+      return false;
     }
-    return false;
   };
 
   const logout = () => {

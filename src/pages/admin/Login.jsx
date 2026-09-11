@@ -9,11 +9,11 @@ export default function Login() {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     
-    const success = login(email, password);
+    const success = await login(email, password);
     if (success) {
       navigate('/admin');
     } else {
