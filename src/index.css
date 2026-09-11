@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Space Grotesk", "Archivo", sans-serif;
+  
+  --color-aero-blue: #7ce7ff;
+  --color-aero-green: #9bf36b;
+  --color-aero-glass: rgba(255, 255, 255, 0.4);
+  --color-aero-glass-strong: rgba(255, 255, 255, 0.7);
+  --color-aero-border: rgba(255, 255, 255, 0.8);
+  --color-aero-dark: #1a1a1a;
+}
+
+@layer base {
+  body {
+    background-color: #e6f7ff;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(124, 231, 255, 0.5), transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(155, 243, 107, 0.4), transparent 40%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+    background-attachment: fixed;
+    color: #1a1a1a;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 20px;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: var(--color-aero-glass);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--color-aero-border);
+    box-shadow: 
+      0 4px 24px -1px rgba(0, 0, 0, 0.05),
+      inset 0 0 12px rgba(255, 255, 255, 0.8);
+    border-radius: 1.5rem;
+  }
+
+  .glass-panel-strong {
+    background: var(--color-aero-glass-strong);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+      0 8px 32px -1px rgba(0, 0, 0, 0.1),
+      inset 0 0 20px rgba(255, 255, 255, 0.9);
+    border-radius: 1.5rem;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  }
+}
