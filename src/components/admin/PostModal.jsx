@@ -88,7 +88,8 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
         while (true) {
           try {
             setGenerationStatus(attempt === 0 ? 'Generating... (attempt 1/3)' : `Generating... (attempt ${attempt + 1}/3)`);
-            const response = await generateWithTimeout('gemini-3.7-flash', 4500); // 4.5s per attempt
+            // Increased timeout to 15s for pro model to allow generation to complete
+            const response = await generateWithTimeout('gemini-3.7-flash', 15000); 
             return { response, usedModel: 'gemini-3.7-flash' };
           } catch (err) {
             const errMsg = err.message || '';
@@ -104,7 +105,8 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
               } else {
                 setGenerationStatus(isQuota ? 'Pro quota reached, switching to Lite...' : 'Switching to Lite model...');
                 try {
-                  const response = await generateWithTimeout('gemini-3.5-flash-lite', 6000);
+                  // Increased timeout to 12s for lite model
+                  const response = await generateWithTimeout('gemini-3.5-flash-lite', 12000);
                   return { response, usedModel: 'gemini-3.5-flash-lite' };
                 } catch (liteErr) {
                   const liteMsg = liteErr.message || '';
@@ -125,7 +127,7 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
       };
 
       const globalTimeout = new Promise((_, reject) => 
-        setTimeout(() => reject(new Error('TIMEOUT')), 15000)
+        setTimeout(() => reject(new Error('TIMEOUT')), 45000) // Increased global timeout to 45s
       );
 
       const { response, usedModel } = await Promise.race([
