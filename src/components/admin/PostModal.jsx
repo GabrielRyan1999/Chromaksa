@@ -204,7 +204,10 @@ export default function PostModal({ isOpen, onClose, onSave, post, initialDate }
     <Dialog.Root open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 transition-opacity" />
-        <Dialog.Content className="fixed top-[5%] bottom-[5%] left-[50%] translate-x-[-50%] bg-white/80 backdrop-blur-3xl border border-white/60 rounded-[32px] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] w-[95vw] max-w-2xl z-50 overflow-hidden flex flex-col">
+        <Dialog.Content 
+          onInteractOutside={(e) => e.preventDefault()}
+          className="fixed top-[5%] bottom-[5%] left-[50%] translate-x-[-50%] bg-white/80 backdrop-blur-3xl border border-white/60 rounded-[32px] shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] w-[95vw] max-w-2xl z-50 overflow-hidden flex flex-col"
+        >
           
           {/* Header */}
           <div className="flex justify-between items-start p-6 border-b border-white/40 shrink-0">
