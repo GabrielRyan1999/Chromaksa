@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="py-24 relative z-10">
       <div className="container mx-auto px-6 max-w-5xl">
-        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-10 md:p-16 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] text-center relative overflow-hidden">
+        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-16 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] text-center relative overflow-hidden">
           {/* Decorative glow */}
           <div className="absolute bottom-0 left-1/2 w-full h-32 bg-green-200/30 blur-3xl -translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 

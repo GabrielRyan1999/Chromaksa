@@ -61,7 +61,7 @@ export default function Portfolio() {
         </h2>
         
         {/* Featured: My Face Is Mine */}
-        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-10 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center mb-16 relative overflow-hidden">
+        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center mb-16 relative overflow-hidden">
           {/* Decorative glow inside panel */}
           <div className="absolute top-1/2 right-0 w-64 h-64 bg-cyan-200/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 

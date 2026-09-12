@@ -80,7 +80,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-white/40 backdrop-blur-3xl border border-white/60 p-16 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden"
+          className="bg-white/40 backdrop-blur-3xl border border-white/60 p-8 md:p-16 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden"
         >
           {/* Inner glowing element */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-cyan-300/30 blur-3xl pointer-events-none"></div>
@@ -90,11 +90,11 @@ export default function Hero() {
             alt="Chromaksa Studio Logo" 
             className="w-48 md:w-64 h-auto object-contain mb-8 drop-shadow-lg relative z-10"
           />
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-slate-800 tracking-tight leading-tight relative z-10" style={{ fontFamily: 'Archivo, sans-serif' }}>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 text-slate-800 tracking-tight leading-tight relative z-10" style={{ fontFamily: 'Archivo, sans-serif' }}>
             Where Art Meets <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-green-500">Technology</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 mb-10 font-medium max-w-2xl relative z-10">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-10 font-medium max-w-2xl relative z-10 px-4 md:px-0">
             Bridging the gap between traditional illustration and cutting-edge AI.
           </p>
           <a href="#contact" className="relative z-10 inline-block bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold text-sm tracking-widest uppercase py-4 px-10 rounded-full shadow-lg hover:shadow-cyan-500/25 hover:scale-105 transition-all">

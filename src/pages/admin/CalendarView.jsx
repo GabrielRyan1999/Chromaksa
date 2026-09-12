@@ -91,22 +91,23 @@ export default function CalendarView() {
         </div>
       </div>
 
-      <div className="glass-panel rounded-3xl overflow-hidden border-white/60 shadow-lg">
-        {/* Days of week header */}
-        <div className="grid grid-cols-7 border-b border-white/60 bg-white/40">
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <div key={day} className="py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-widest">
-              {day}
-            </div>
-          ))}
-        </div>
+      <div className="glass-panel rounded-3xl overflow-x-auto border-white/60 shadow-lg custom-scrollbar">
+        <div className="min-w-[700px]">
+          {/* Days of week header */}
+          <div className="grid grid-cols-7 border-b border-white/60 bg-white/40">
+            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+              <div key={day} className="py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-widest">
+                {day}
+              </div>
+            ))}
+          </div>
 
-        {/* Calendar grid */}
-        <div className="grid grid-cols-7 auto-rows-[120px] bg-white/20 gap-px">
-          {/* Empty cells for start of month padding */}
-          {Array.from({ length: startOfMonth(currentDate).getDay() }).map((_, i) => (
-            <div key={`empty-${i}`} className="bg-transparent" />
-          ))}
+          {/* Calendar grid */}
+          <div className="grid grid-cols-7 auto-rows-[120px] bg-white/20 gap-px">
+            {/* Empty cells for start of month padding */}
+            {Array.from({ length: startOfMonth(currentDate).getDay() }).map((_, i) => (
+              <div key={`empty-${i}`} className="bg-transparent" />
+            ))}
 
           {/* Actual days */}
           {daysInMonth.map((day) => {
@@ -161,6 +162,7 @@ export default function CalendarView() {
               </div>
             );
           })}
+        </div>
         </div>
       </div>
 
