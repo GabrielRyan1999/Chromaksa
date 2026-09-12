@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Lock, Mail, ArrowRight, Home } from 'lucide-react';
+import { Lock, Mail, ArrowRight, Home, Eye, EyeOff } from 'lucide-react';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -70,13 +71,21 @@ export default function Login() {
             <div className="relative">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-cyan-700/50" />
               <input 
-                type="password" 
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full bg-white/60 backdrop-blur-md border border-white/60 rounded-2xl pl-12 pr-4 py-4 text-gray-900 font-medium focus:ring-2 focus:ring-cyan-400 outline-none shadow-sm transition-all"
+                className="w-full bg-white/60 backdrop-blur-md border border-white/60 rounded-2xl pl-12 pr-12 py-4 text-gray-900 font-medium focus:ring-2 focus:ring-cyan-400 outline-none shadow-sm transition-all"
                 required 
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-cyan-700/50 hover:text-cyan-600 transition-colors"
+                tabIndex="-1"
+              >
+                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+              </button>
             </div>
           </div>
 
