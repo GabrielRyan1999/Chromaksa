@@ -67,7 +67,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
       {/* Canvas Layer */}
       <canvas 
         ref={canvasRef} 
@@ -80,21 +80,24 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="glass-panel-strong p-12 max-w-3xl mx-auto flex flex-col items-center"
+          className="bg-white/40 backdrop-blur-3xl border border-white/60 p-16 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] max-w-4xl mx-auto flex flex-col items-center relative overflow-hidden"
         >
+          {/* Inner glowing element */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-cyan-300/30 blur-3xl pointer-events-none"></div>
+
           <img 
             src="/logo.png" 
             alt="Chromaksa Studio Logo" 
-            className="w-48 md:w-80 h-auto object-contain mb-8 drop-shadow-md"
+            className="w-48 md:w-64 h-auto object-contain mb-8 drop-shadow-lg relative z-10"
           />
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gray-900 tracking-tight" style={{ fontFamily: 'Archivo, sans-serif' }}>
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 text-slate-800 tracking-tight leading-tight relative z-10" style={{ fontFamily: 'Archivo, sans-serif' }}>
             Where Art Meets <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">Technology</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-green-500">Technology</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 font-medium">
+          <p className="text-xl md:text-2xl text-slate-600 mb-10 font-medium max-w-2xl relative z-10">
             Bridging the gap between traditional illustration and cutting-edge AI.
           </p>
-          <a href="#contact" className="inline-block bg-gradient-to-r from-blue-400 to-green-400 text-white font-bold text-lg py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+          <a href="#contact" className="relative z-10 inline-block bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold text-sm tracking-widest uppercase py-4 px-10 rounded-full shadow-lg hover:shadow-cyan-500/25 hover:scale-105 transition-all">
             Start a Project
           </a>
         </motion.div>

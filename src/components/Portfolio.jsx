@@ -56,14 +56,17 @@ export default function Portfolio() {
   return (
     <section id="portfolio" className="py-24 relative z-10" ref={containerRef}>
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16 text-gray-800" style={{ fontFamily: 'Archivo, sans-serif' }}>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16 text-slate-800 tracking-tight" style={{ fontFamily: 'Archivo, sans-serif' }}>
           Selected Work
         </h2>
         
         {/* Featured: My Face Is Mine */}
-        <div className="glass-panel-strong p-8 md:p-12 max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center mb-16">
-          <div className="flex-1 w-full aspect-video bg-white/40 rounded-2xl border border-white/60 flex items-center justify-center relative overflow-hidden shadow-inner">
-            <svg viewBox="0 0 100 100" className="w-3/4 h-3/4 text-blue-500 opacity-60 absolute" preserveAspectRatio="none">
+        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-10 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center mb-16 relative overflow-hidden">
+          {/* Decorative glow inside panel */}
+          <div className="absolute top-1/2 right-0 w-64 h-64 bg-cyan-200/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+
+          <div className="flex-1 w-full aspect-video bg-white/50 rounded-3xl border border-white/80 flex items-center justify-center relative overflow-hidden shadow-inner z-10">
+            <svg viewBox="0 0 100 100" className="w-3/4 h-3/4 text-cyan-500 opacity-60 absolute" preserveAspectRatio="none">
               <motion.path 
                 d="M10,80 Q30,20 50,50 T90,20" 
                 fill="none" 
@@ -74,21 +77,22 @@ export default function Portfolio() {
                 style={{ pathLength: displayProgress }}
               />
             </svg>
-            <div className="relative z-10 bg-white/80 backdrop-blur-md px-6 py-2 rounded-full border border-blue-200 text-blue-900 font-medium">
+            <div className="relative z-10 bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-cyan-200 text-cyan-800 font-bold text-xs uppercase tracking-widest shadow-sm">
               Illustration: [My Face Is Mine Showcase]
             </div>
           </div>
           
-          <div className="flex-1">
-            <div className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-bold mb-4">
+          <div className="flex-1 z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-green-100 to-cyan-100 text-slate-700 text-xs font-bold uppercase tracking-widest mb-6 border border-white/60 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
               Featured Showcase
             </div>
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">My Face Is Mine</h3>
-            <p className="text-gray-700 text-lg mb-6">
+            <h3 className="text-4xl font-extrabold mb-4 text-slate-800 tracking-tight">My Face Is Mine</h3>
+            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
               A 2D educational animation on deepfake and AI safety tailored for elementary school children. We break down complex tech concepts into approachable, hand-drawn lessons.
             </p>
-            <a href="#contact" className="text-blue-600 font-bold hover:text-blue-800 flex items-center gap-2">
-              Discuss a similar project <span>→</span>
+            <a href="#contact" className="group inline-flex items-center gap-2 text-cyan-600 font-bold text-sm uppercase tracking-widest hover:text-cyan-800 transition-colors">
+              Discuss a similar project <span className="group-hover:translate-x-1 transition-transform">→</span>
             </a>
           </div>
         </div>
