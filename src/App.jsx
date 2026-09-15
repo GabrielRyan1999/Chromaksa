@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { AnimatedNavFramer } from './components/ui/navigation-menu';
 import Footer1 from './components/ui/footer-section-1';
+import { Analytics } from '@vercel/analytics/react';
 
 // Admin imports
 import ProtectedRoute from './components/admin/ProtectedRoute';
@@ -43,6 +44,7 @@ function App() {
         {/* 404 Route */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Analytics />
     </AuthProvider>
   );
 }
