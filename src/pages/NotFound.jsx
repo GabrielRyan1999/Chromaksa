@@ -13,7 +13,7 @@ export default function NotFound() {
           Lost in the Data Stream
         </h2>
         <p className="text-slate-600 text-lg mb-10">
-          The page you're looking for doesn't exist, or maybe it was just a glitch in the AI.
+          Looks like we've drifted off the canvas. The page you are looking for has been moved or doesn't exist.
         </p>
         <Link 
           to="/" 
