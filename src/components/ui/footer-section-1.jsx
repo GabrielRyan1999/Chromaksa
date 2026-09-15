@@ -29,9 +29,6 @@ export default function Footer1() {
 
   const socialLinks = [
     { icon: <i className="fab fa-instagram text-xl w-5 h-5 flex items-center justify-center"></i>, href: "https://instagram.com/chromaksa.studio", label: "Instagram" },
-    { icon: <i className="fab fa-tiktok text-xl w-5 h-5 flex items-center justify-center"></i>, href: "#", label: "TikTok" },
-    { icon: <i className="fab fa-youtube text-xl w-5 h-5 flex items-center justify-center"></i>, href: "#", label: "YouTube" },
-    { icon: <i className="fab fa-x-twitter text-xl w-5 h-5 flex items-center justify-center"></i>, href: "#", label: "Twitter" },
   ];
 
   return (
