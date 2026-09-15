@@ -22,6 +22,7 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
+              <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
               <div>
                 <label htmlFor="name" className="block text-[11px] font-bold text-slate-500 uppercase tracking-widest mb-2 pl-2">Name</label>
                 <input id="name" type="text" name="name" required className="w-full bg-white/60 backdrop-blur-md border border-white/80 shadow-inner text-slate-900 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all placeholder:text-slate-400" placeholder="John Doe" />
