@@ -1,6 +1,7 @@
 import { Routes, Route, Outlet } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Home from './pages/Home';
+import NotFound from './pages/NotFound';
 import { AnimatedNavFramer } from './components/ui/navigation-menu';
 import Footer1 from './components/ui/footer-section-1';
 
@@ -38,6 +39,9 @@ function App() {
             <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
+
+        {/* 404 Route */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AuthProvider>
   );
