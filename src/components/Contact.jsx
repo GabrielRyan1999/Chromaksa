@@ -15,11 +15,9 @@ export default function Contact() {
           Ready to bring your vision to life? Get in touch with us via email or follow our journey on our socials.
         </p>
         
-        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-10 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] relative z-10">
+        <div className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-12 rounded-[3rem] shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] relative z-10">
           {state.succeeded ? (
-            <div className="bg-green-50/80 backdrop-blur-sm border border-green-200 text-green-700 px-6 py-8 rounded-2xl font-bold shadow-inner">
-              ✨ Thanks for reaching out! We'll get back to you soon.
-            </div>
+            <div className="bg-green-50/80 backdrop-blur-sm border border-green-200 text-green-700 px-6 py-8 rounded-2xl font-bold shadow-inner flex items-center justify-center gap-3"><span className="text-2xl" role="img" aria-label="Party Popper">??</span> <span>Thanks for reaching out! We'll get back to you soon.</span></div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-left">
               <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
@@ -48,3 +46,4 @@ export default function Contact() {
     </section>
   );
 }
+
