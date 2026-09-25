@@ -9,6 +9,7 @@ export default function Hero() {
     const ctx = canvas.getContext('2d');
     let points = [];
     let rafId;
+    let currentMouse = null;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -20,17 +21,21 @@ export default function Hero() {
 
     const handleMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect();
-      points.push({
+      currentMouse = {
         x: e.clientX - rect.left,
         y: e.clientY - rect.top,
-        age: 0,
-      });
+      };
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      if (currentMouse) {
+        points.push({ ...currentMouse, age: 0 });
+        currentMouse = null; // Consume it so we don't push duplicates if mouse stops
+      }
       
       if (points.length > 0) {
         ctx.beginPath();

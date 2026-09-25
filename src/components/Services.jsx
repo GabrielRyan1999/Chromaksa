@@ -13,7 +13,10 @@ export default function Services() {
           {/* Illustration & Animation */}
           <motion.div 
             whileHover="hover"
-            className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-10 rounded-[2.5rem] group relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] transition-all hover:bg-white/60"
+            whileTap="hover"
+            whileFocus="hover"
+            tabIndex={0}
+            className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-10 rounded-[2.5rem] group relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] transition-all hover:bg-white/60 focus:outline-none focus:ring-4 focus:ring-cyan-400"
           >
             <div className="relative h-56 mb-8 rounded-3xl bg-white/50 border border-white/60 flex items-center justify-center overflow-hidden shadow-inner">
               <motion.div 
@@ -43,7 +46,10 @@ export default function Services() {
           {/* Technology & AI */}
           <motion.div 
             whileHover="hover"
-            className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-10 rounded-[2.5rem] group relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] transition-all hover:bg-white/60"
+            whileTap="hover"
+            whileFocus="hover"
+            tabIndex={0}
+            className="bg-white/40 backdrop-blur-2xl border border-white/60 p-6 md:p-10 rounded-[2.5rem] group relative overflow-hidden shadow-[0_8px_32px_0_rgba(31,38,135,0.05)] transition-all hover:bg-white/60 focus:outline-none focus:ring-4 focus:ring-cyan-400"
           >
             <div className="relative h-56 mb-8 rounded-3xl bg-white/50 border border-white/60 flex items-center justify-center overflow-hidden shadow-inner">
               <motion.div 

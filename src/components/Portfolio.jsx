@@ -97,8 +97,8 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Horizontal Accordion Gallery */}
-        <div className="w-full flex h-96 md:h-[500px] gap-2 md:gap-4 max-w-6xl mx-auto">
+        {/* Horizontal Gallery / Accordion */}
+        <div className="w-full flex h-80 md:h-[500px] gap-4 max-w-6xl mx-auto overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-4 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
           {[
             { id: 1, title: 'Concept Art', color: 'from-blue-200 to-cyan-100' },
             { id: 2, title: 'Character Design', color: 'from-green-200 to-emerald-100' },
@@ -109,18 +109,19 @@ export default function Portfolio() {
           ].map((item, i) => (
             <div 
               key={item.id}
-              className={`group relative overflow-hidden cursor-pointer rounded-[2.5rem] bg-gradient-to-b ${item.color} border border-white/60 shadow-sm transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex-1 hover:flex-[6] flex items-center justify-center`}
+              tabIndex={0}
+              className={`group relative overflow-hidden cursor-pointer rounded-[2.5rem] bg-gradient-to-b ${item.color} border border-white/60 shadow-sm transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex-none w-64 snap-center md:w-auto md:flex-1 md:hover:flex-[6] md:focus:flex-[6] focus:outline-none focus:ring-4 focus:ring-cyan-400 flex items-center justify-center`}
             >
-              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 transition-colors duration-700 pointer-events-none" />
+              <div className="absolute inset-0 bg-white/0 group-hover:bg-white/20 group-focus:bg-white/20 transition-colors duration-700 pointer-events-none" />
               
-              {/* Number indicator (hidden on hover) */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white/60 border border-white/80 flex items-center justify-center text-sm font-bold text-gray-600 group-hover:opacity-0 transition-opacity duration-300">
+              {/* Number indicator (hidden on hover/focus on desktop) */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white/60 border border-white/80 flex items-center justify-center text-sm font-bold text-gray-600 md:group-hover:opacity-0 md:group-focus:opacity-0 transition-opacity duration-300">
                 {i + 1}
               </div>
 
-              {/* Title (shown on hover) */}
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200 absolute">
-                <span className="bg-white/80 backdrop-blur-md text-gray-800 px-6 py-3 rounded-full font-bold shadow-sm whitespace-nowrap border border-white/80">
+              {/* Title (shown by default on mobile, on hover/focus on desktop) */}
+              <div className="opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus:opacity-100 transition-opacity duration-500 delay-200 absolute">
+                <span className="bg-white/90 backdrop-blur-md text-gray-800 px-6 py-3 rounded-full font-bold shadow-sm whitespace-nowrap border border-white/80">
                    Illustration: [{item.title}]
                 </span>
               </div>
