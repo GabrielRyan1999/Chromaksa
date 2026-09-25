@@ -21,7 +21,7 @@ export default function About() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-100/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="w-32 h-32 rounded-full bg-white/80 border-[6px] border-cyan-200 mb-6 flex items-center justify-center shadow-inner relative z-10 overflow-hidden">
-                <img src="/aline.jpg" alt="Aline" className="w-full h-full object-cover" />
+                <img src="/aline.jpg" loading="lazy" alt="Aline" className="w-full h-full object-cover" />
               </div>
               <h4 className="text-2xl font-extrabold text-slate-800 relative z-10 tracking-tight">Aline</h4>
               <p className="text-cyan-600 font-bold mb-3 relative z-10 uppercase tracking-widest text-xs">Illustration & Animation</p>
@@ -86,7 +86,7 @@ export default function About() {
             >
               <div className="absolute inset-0 bg-gradient-to-bl from-green-100/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="w-32 h-32 rounded-full bg-white/80 border-[6px] border-green-200 mb-6 flex items-center justify-center shadow-inner relative z-10 overflow-hidden">
-                <img src="/ryan.png" alt="Ryan" className="w-full h-full object-cover scale-[1.7] origin-[25%_35%]" />
+                <img src="/ryan.png" loading="lazy" alt="Ryan" className="w-full h-full object-cover scale-[1.7] origin-[25%_35%]" />
               </div>
               <h4 className="text-2xl font-extrabold text-slate-800 relative z-10 tracking-tight">Ryan</h4>
               <p className="text-green-600 font-bold mb-3 relative z-10 uppercase tracking-widest text-xs">Technology & AI</p>

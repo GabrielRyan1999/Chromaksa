@@ -25,7 +25,7 @@ export default function Services() {
                   hover: { opacity: 0 }
                 }}
               >
-                Illustration: [Line-Art Placeholder]
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Line Art Placeholder" className="absolute inset-0 w-full h-full object-cover opacity-50" /><span className="relative z-10">Illustration: [Line-Art Placeholder]</span>
               </motion.div>
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center text-cyan-700 font-bold uppercase tracking-widest text-xs bg-cyan-50/80"
@@ -34,7 +34,7 @@ export default function Services() {
                   hover: { opacity: 1 }
                 }}
               >
-                Illustration: [Colored Animation Artwork]
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Colored Art" className="absolute inset-0 w-full h-full object-cover opacity-80" /><span className="relative z-10">Illustration: [Colored Animation Artwork]</span>
               </motion.div>
             </div>
             <h3 className="text-2xl font-bold mb-4 text-slate-900 tracking-tight">Illustration & Animation</h3>
@@ -58,7 +58,7 @@ export default function Services() {
                   hover: { opacity: 0 }
                 }}
               >
-                Illustration: [Tech Wireframe Placeholder]
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Tech Wireframe" className="absolute inset-0 w-full h-full object-cover opacity-50" /><span className="relative z-10">Illustration: [Tech Wireframe Placeholder]</span>
               </motion.div>
               <motion.div 
                 className="absolute inset-0 flex items-center justify-center text-green-700 font-bold uppercase tracking-widest text-xs bg-green-50/80"
@@ -67,7 +67,7 @@ export default function Services() {
                   hover: { opacity: 1 }
                 }}
               >
-                Illustration: [AI Conceptual Colored]
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="AI Conceptual" className="absolute inset-0 w-full h-full object-cover opacity-80" /><span className="relative z-10">Illustration: [AI Conceptual Colored]</span>
               </motion.div>
             </div>
             <h3 className="text-2xl font-bold mb-4 text-slate-900 tracking-tight">Technology & AI</h3>
@@ -81,3 +81,4 @@ export default function Services() {
     </section>
   );
 }
+
